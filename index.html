@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherWise Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #007BFF;
+            --secondary-color: #6C757D;
+            --background-light: #F8F9FA;
+            --background-dark: #343A40;
+            --text-light: #FFFFFF;
+            --text-dark: #212529;
+            --highlight-high: #FF5733;
+            --highlight-low: #33C3FF;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .current-weather {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .current-weather i {
+            font-size: 3rem;
+        }
+
+        .current-weather-details {
+            font-size: 1.2rem;
+        }
+
+        .forecast {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .forecast-item {
+            background: var(--background-light);
+            border-radius: 10px;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .forecast-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .forecast-item h3 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        .forecast-item i {
+            font-size: 2rem;
+            margin: 10px 0;
+            color: var(--highlight-low);
+        }
+
+        .dark-mode-toggle {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .dark-mode-toggle button {
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .dark-mode-toggle button:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: var(--background-dark);
+            color: var(--text-light);
+        }
+
+        body.dark-mode .forecast-item {
+            background: var(--background-dark);
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>WeatherWise Dashboard</header>
+
+    <div class="container">
+        <section class="current-weather">
+            <div>
+                <h2>28°C</h2>
+                <p>Sunny</p>
+            </div>
+            <i class="fas fa-sun"></i>
+            <div class="current-weather-details">
+                <p>High: 30°C | Low: 22°C</p>
+                <p>Wind: 10 km/h NW | Humidity: 40%</p>
+            </div>
+        </section>
+
+        <section class="forecast">
+            <div class="forecast-item">
+                <h3>Monday</h3>
+                <i class="fas fa-cloud"></i>
+                <p>Cloudy</p>
+                <p>25°C / 18°C</p>
+            </div>
+            <div class="forecast-item">
+                <h3>Tuesday</h3>
+                <i class="fas fa-sun"></i>
+                <p>Sunny</p>
+                <p>28°C / 20°C</p>
+            </div>
+            <div class="forecast-item">
+                <h3>Wednesday</h3>
+                <i class="fas fa-cloud-showers-heavy"></i>
+                <p>Rainy</p>
+                <p>24°C / 19°C</p>
+            </div>
+            <div class="forecast-item">
+                <h3>Thursday</h3>
+                <i class="fas fa-bolt"></i>
+                <p>Stormy</p>
+                <p>22°C / 18°C</p>
+            </div>
+        </section>
+
+        <div class="dark-mode-toggle">
+            <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>
